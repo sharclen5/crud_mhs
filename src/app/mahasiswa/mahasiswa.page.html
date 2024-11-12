@@ -124,15 +124,16 @@
   <ion-card *ngFor="let item of dataMahasiswa">
     <ion-item>
       <ion-label>
-        {{item.nama}}
-        <p>{{item.jurusan}}</p>
+        {{ item.nama }}
+        <p>{{ item.jurusan }}</p>
       </ion-label>
-      <ion-button expand="block" (click)="openModalEdit(true,item.id)">
+      <ion-button expand="block" (click)="openModalEdit(true, item.id)">
         Edit
       </ion-button>
-      <ion-button color="danger" slot="end" (click)="hapusMahasiswa(item.id)">
+      <ion-button color="danger" slot="end" (click)="confirmDelete(item.id)">
         Hapus
       </ion-button>
     </ion-item>
   </ion-card>
+  
 </ion-content>

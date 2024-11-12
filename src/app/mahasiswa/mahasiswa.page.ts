@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { ModalController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mahasiswa',
@@ -17,8 +18,34 @@ export class MahasiswaPage implements OnInit {
 
   constructor(
     private api: ApiService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private alertController: AlertController
   ) {}
+
+async confirmDelete(itemId: number) {
+  const alert = await this.alertController.create({
+    header: 'Confirm Delete',
+    message: 'Are you sure you want to delete this item?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Delete canceled');
+        }
+      },
+      {
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => {
+          this.hapusMahasiswa(itemId);
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
 
   ngOnInit() {
     this.getMahasiswa();
