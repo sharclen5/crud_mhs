@@ -8,23 +8,22 @@
 
 <p> Pada mahasiswa.page.ts digunakan metode getMahasiswa() untuk mengambil data dari API melalui ApiService. Metode ini dipanggil saat komponen diinisialisasi melalui ngOnInit(), kemudian data yang diterima disimpan dalam variabel dataMahasiswa. Potongan kode berikut menunjukkan pemanggilan API dan penyimpanan data: <p>
 
-<span>
-  ngOnInit() {
-    this.getMahasiswa();
-  }
+```typescript
+ngOnInit() {
+  this.getMahasiswa();
+}
 
-  getMahasiswa() {
-    this.api.tampil('tampil.php').subscribe({
-      next: (res: any) => {
-        console.log('sukses', res);
-        this.dataMahasiswa = res;
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
-  }
-<span>
+getMahasiswa() {
+  this.api.tampil('tampil.php').subscribe({
+    next: (res: any) => {
+      console.log('sukses', res);
+      this.dataMahasiswa = res;
+    },
+    error: (err: any) => {
+      console.log(err);
+    },
+  });
+}
 
 ### 2. Menambahkan Data Baru
 
